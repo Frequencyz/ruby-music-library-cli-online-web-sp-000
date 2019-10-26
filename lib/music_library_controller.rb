@@ -22,15 +22,15 @@ class MusicLibraryController
     answer = gets.chomp
       if answer == "list songs"
       list_songs
-     elsif answer == "list artists"
+      elsif answer == "list artists"
        list_artists
-     elsif answer == "list genres"
+      elsif answer == "list genres"
        list_genres
-     elsif answer == "list artist"
+      elsif answer == "list artist"
        list_songs_by_artist
-     elsif answer == "list genre"
+      elsif answer == "list genre"
        list_songs_by_genre
-     elsif answer == "play song"
+      elsif answer == "play song"
        play_song
       end
     end
@@ -66,7 +66,7 @@ class MusicLibraryController
    puts "Please enter the name of an artist:"
    name_of_artist = gets.chomp
    artist_1 = Artist.find_by_name(name_of_artist)
-   if artist_1
+    if artist_1
    song_list = artist_1.songs.sort_by {|song| song.name }
    song_list.each do |e| puts "#{i}. #{e.name} - #{e.genre.name}"
    i +=1
@@ -79,7 +79,7 @@ class MusicLibraryController
    puts "Please enter the name of a genre:"
    name_of_genre = gets.chomp
    genre_1 = Genre.find_by_name(name_of_genre)
-   if genre_1
+    if genre_1
    song_by_genre = genre_1.songs.sort_by {|song| song.name }
    song_by_genre.each do |e| puts "#{i}. #{e.artist.name} - #{e.name}"
    i +=1
@@ -92,9 +92,9 @@ class MusicLibraryController
     selected_song = gets.chomp
     song_num = selected_song.to_i - 1
     song_list = Song.all.sort_by {|song| song.name }
-    if  song_num <= song_list.size && selected_song.to_i != 0
+     if  song_num <= song_list.size && selected_song.to_i != 0
     song = song_list[song_num]
-    if song
+     if song
     puts "Playing #{song.name} by #{song.artist.name}"
       end
     end
